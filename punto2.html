@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+
+    <title>Document</title>
+</head>
+<body>
+    <form id="frm1" action="/action_page.php">
+            <input type="text" name="cat" value="Categoría">
+            <input type="text" name="cont"value="Conteo"><br>
+            <input type="text" name="cat1" >
+            <input type="text" name="cont1"><br>
+            <input type="text" name="cat2">
+            <input type="text" name="cont2"><br>
+            <input type="text" name="cat3">
+            <input type="text" name="cont3"><br>
+            
+    </form>
+    <br><br><br>
+    <button onclick="myf()">Graficar</button>
+    <br><br><br>
+
+    
+    <div id="myDiv"></div>
+
+    <script>
+        function myf(){
+            var x = document.getElementById("frm1");
+            var conteo=[];
+            var categoria=[];
+            var text1="hola";
+            var text2="";
+            var m = x.length();
+            document.getElementById("demo").innerHTML=text1+"<br>"+text2;
+
+            for(var i =2; i<m; i++){
+                if(i%2==0){
+                    categoria[i]+=x.elements[i].value;
+                    text1+=x.elements[i].value;
+                }else{
+                    conteo[i]+=x.elements[i].value;
+                    text2+=x.elements[i].value;
+                }
+
+            }
+            document.getElementById("demo").innerHTML=text1+"<br>"+text2;
+            var data=[{x:categoria,y:conteo,type: "histogram"}];
+            Plotly.newPlot('myDiv', data)
+        }
+    </script>
+    
+</body>
+</html>
