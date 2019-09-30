@@ -6,18 +6,19 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
 
-    <title>Document</title>
+    <title>Punto 2</title>
 </head>
 <body>
+    <h3>Ejercicio 2</h3>
     <form id="frm1" action="/action_page.php">
-            <input type="text" name="cat" value="Categoría">
-            <input type="text" name="cont"value="Conteo"><br>
-            <input type="text" name="cat1" >
-            <input type="text" name="cont1"><br>
-            <input type="text" name="cat2">
-            <input type="text" name="cont2"><br>
-            <input type="text" name="cat3">
-            <input type="text" name="cont3"><br>
+            <input type="text" id="cat" value="Categoría" disabled="true">
+            <input type="text" id="cont"value="Conteo" disabled="true"><br>
+            <input type="text" id="cat1" >
+            <input type="text" id="cont1"><br>
+            <input type="text" id="cat2">
+            <input type="text" id="cont2"><br>
+            <input type="text" id="cat3">
+            <input type="text" id="cont3"><br>
             
     </form>
     <br><br><br>
@@ -25,31 +26,42 @@
     <br><br><br>
 
     
-    <div id="myDiv"></div>
+    <div id="grafico2"></div>
 
     <script>
         function myf(){
-            var x = document.getElementById("frm1");
-            var conteo=[];
-            var categoria=[];
-            var text1="hola";
-            var text2="";
-            var m = x.length();
-            document.getElementById("demo").innerHTML=text1+"<br>"+text2;
+            // var string1 = document.getElementById("cat1").value;
+            // var string2 = document.getElementById("cat2").value;
+            // var string3 = document.getElementById("cat3").value;
+            // var num1 = parseInt(document.getElementById("cont1").value);
+            // var num2 = parseInt(document.getElementById("cont2").value);
+            // var num3 = parseInt(document.getElementById("cont3").value);
+            // var data = [
+            //     {
+            //         x: [string1,string2,string3],
+            //         y: [num1,num2,num3],
+            //         type:'bar'
+            //     }
+            // ];
 
-            for(var i =2; i<m; i++){
-                if(i%2==0){
-                    categoria[i]+=x.elements[i].value;
-                    text1+=x.elements[i].value;
-                }else{
-                    conteo[i]+=x.elements[i].value;
-                    text2+=x.elements[i].value;
-                }
+            var x =[];
 
+            var y =[];
+
+            for(var i =1; i<=3;i++){
+                x[i]=document.getElementById("cat"+String(i)).value;
+                y[i]=document.getElementById("cont"+String(i)).value;
+                
             }
-            document.getElementById("demo").innerHTML=text1+"<br>"+text2;
-            var data=[{x:categoria,y:conteo,type: "histogram"}];
-            Plotly.newPlot('myDiv', data)
+            var data = [
+                {
+                    x: x,
+                    y: y,
+                    type:'bar'
+                }
+            ];
+            Plotly.newPlot("grafico2",data);
+         
         }
     </script>
     
